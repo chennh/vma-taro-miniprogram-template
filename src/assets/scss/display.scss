@@ -1,0 +1,33 @@
+
+// 布局
+
+// 悬浮固定
+.fixed {
+  position: fixed;
+}
+
+// 固定底部
+.fixed-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+// 固定顶部
+.fixed-top {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+// 相对布局
+.relative {
+  position: relative;
+}
+
+// 绝对布局
+.absolute {
+  position: absolute;
+}

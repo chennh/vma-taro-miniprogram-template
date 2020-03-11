@@ -1,0 +1,6 @@
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-head: common-chart;
+
+.#{$style-head} {}

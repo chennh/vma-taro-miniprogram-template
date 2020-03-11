@@ -1,0 +1,10 @@
+@import "../../../assets/scss/index.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-head: common-no-data;
+
+.#{$style-head} {
+  @include text(24, $theme-text-color-3, 500);
+  @include letter-spacing(1.4);
+}

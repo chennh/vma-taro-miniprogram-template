@@ -1,0 +1,137 @@
+
+// 弹性布局
+
+$direction: (
+  ver, hor
+);
+
+$hor-value: (
+  left: flex-start, 
+  center: center,
+  right: flex-end
+);
+
+$ver-value: (
+  top: flex-start,
+  center: center,
+  bottom: flex-end
+);
+
+// 重命名列表
+$rename-list: (
+  align-hor-center-top: align-top,
+  align-hor-center-bottom: align-bottom,
+  align-hor-left-center: align-left,
+  align-hor-right-center: align-right,
+  align-hor-center-center: align-center,
+  align-hor-center-baseline: align-baseline,
+  align-ver-top-center: align-default,
+  align-ver-bottom-center: align-ver-bottom,
+  align-ver-center-left: align-ver-left,
+  align-ver-center-right: align-ver-right,
+  align-ver-center-center: align-ver-center,
+  align-hor-bet-center: align-hor-bet,
+  align-ver-bet-center: align-ver-bet
+);
+
+// 控制是否添加flex-wrap: wrap，默认为true
+$is-wrap: true;
+
+// 控制是否不只显示重命名列表里的样式，默认为false
+$is-not-only-rename-list: true;
+
+$baseline: baseline;
+$bet: space-between;
+
+// 基础样式
+@mixin display(
+  $align-items,
+  $justify-content,
+  $direction: 0
+) {
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  @if $direction == 1 {
+    flex-direction: column;
+  }
+  @if $is-wrap {
+    flex-wrap: wrap;
+  }
+};
+
+// 检测是否在重命名列表中，若是则进行重命名操作
+@mixin checkRename($name, $align-items, $justify-content, $direction) {
+  $flag: false;
+  @each $k, $v in $rename-list {
+    @if $name == $k {
+      .#{$v} {
+        @if $direction == 'ver' {
+          @include display($align-items, $justify-content, 1);
+        } @else if $direction == 'hor' {
+          @include display($align-items, $justify-content);
+        }
+      }
+    }
+  }
+}
+
+@each $dir in $direction {
+  @if $dir == 'ver' {
+    // 基本对齐
+    @each $k-i, $v-i in $ver-value {
+      @each $k-j, $v-j in $hor-value {
+        $name: align-#{$dir}-#{$k-i}-#{$k-j};
+        @if $is-not-only-rename-list {
+          .#{$name} {
+            @include display($v-j, $v-i, 1);
+          }
+        }
+        @include checkRename($name, $v-j, $v-i, $dir);
+      }
+    }
+    // 两端对齐
+    @each $key, $value in $hor-value {
+      $name: align-#{$dir}-bet-#{$key};
+      @if $is-not-only-rename-list {
+        .#{$name} {
+          @include display($value, $bet, 1);
+        }
+      }
+      @include checkRename($name, $value, $bet, $dir);
+    }
+  } @else if $dir == 'hor' {
+    // 基本对齐
+    @each $k-i, $v-i in $hor-value { 
+      @each $k-j, $v-j in $ver-value {
+        $name: align-#{$dir}-#{$k-i}-#{$k-j};
+        @if $is-not-only-rename-list {
+          .#{$name} {
+            @include display($v-j, $v-i);
+          }
+        }
+        @include checkRename($name, $v-j, $v-i, $dir);
+      }
+    }
+    // 基线对齐
+    @each $k-i, $v-i in $hor-value {
+      $name: align-#{$dir}-#{$k-i}-#{$baseline};
+      @if $is-not-only-rename-list {
+        .#{$name} {
+          @include display($baseline, $v-i);
+        }
+      }
+      @include checkRename($name, $baseline, $v-i, $dir);
+    }
+    // 两端对齐
+    @each $key, $value in $ver-value {
+      $name: align-#{$dir}-bet-#{$key};
+      @if $is-not-only-rename-list {
+        .#{$name} {
+          @include display($value, $bet);
+        }
+      }
+      @include checkRename($name, $value, $bet, $dir);
+    }
+  }
+}

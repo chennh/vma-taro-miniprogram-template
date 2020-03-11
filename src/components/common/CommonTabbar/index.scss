@@ -1,0 +1,25 @@
+@import "../../../assets/scss/index.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-head: common-tab-bar;
+
+.#{$style-head} {
+  @include match-width();
+  @include box();
+  @include overflow();
+  @include fixed();
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 20;
+
+  &__inner {
+    @include match-width();
+    @include height($tab-bar-height);
+  }
+
+  &__item {
+    @include match-left-space();
+  }
+}

@@ -1,0 +1,25 @@
+
+// 调试色
+
+.bg-white {
+  background-color: #FFFFFF;
+}
+
+.bg-black {
+  background-color: #000000;
+}
+
+$colors: (
+  info: #CCE5FF,
+  done: #D4EDDA,
+  danger: #F8D7DA,
+  warn: #FFF3CD,
+  light: #D1ECF1,
+  dark: #E2E3E5
+);
+
+@each $key, $value in $colors {
+  .bg-#{$key} {
+    background-color: $value;
+  }
+}

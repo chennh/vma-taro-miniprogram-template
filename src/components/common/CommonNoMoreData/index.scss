@@ -1,0 +1,17 @@
+@import "../../../assets/scss/index.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-head: common-no-more-data;
+
+.#{$style-head} {
+  @include match-width();
+  @include text(24, $theme-text-color-4, 500);
+
+  &__bar {
+    @include width(150);
+    @include height(1);
+    @include radius(10);
+    @include bgc($theme-text-color-4);
+  }
+}

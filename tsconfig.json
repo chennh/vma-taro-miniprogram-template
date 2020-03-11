@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "lib",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "jsx": "preserve",
+    "jsxFactory": "Taro.createElement",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "global.d.ts"
+    ],
+    "paths": {
+      "@/api": ["src/api"],
+      "@/api/*": ["src/api/*"],
+      "@/assets": ["src/assets"],
+      "@/assets/*": ["src/assets/*"],
+      "@/components": ["src/components"],
+      "@/components/*": ["src/components/*"],
+      "@/config": ["src/config"],
+      "@/config/*": ["src/config/*"],
+      "@/constants": ["src/constants"],
+      "@/constants/*": ["src/constants/*"],
+      "@/pages": ["src/pages"],
+      "@/pages/*": ["src/pages/*"],
+      "@/routes": ["src/routes"],
+      "@/routes/*": ["src/routes/*"],
+      "@/storages": ["src/storages"],
+      "@/storages/*": ["src/storages/*"],
+      "@/store": ["src/store"],
+      "@/store/*": ["src/store/*"],
+      "@/utils": ["src/utils"],
+      "@/utils/*": ["src/utils/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "compileOnSave": false
+}

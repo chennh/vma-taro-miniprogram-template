@@ -1,0 +1,133 @@
+
+// 盒子属性 + 字体大小
+
+@function px2n($px) {
+  @if ($px == 0) {
+    @return 0;
+  }
+  @return $px + px;
+}
+
+$distance-map: (
+  pd: padding,
+  pt: padding-top,
+  pr: padding-right,
+  pb: padding-bottom,
+  pl: padding-left,
+  mg: margin,
+  mt: margin-top,
+  mr: margin-right,
+  mb: margin-bottom,
+  ml: margin-left
+);
+
+@each $key, $propety in $distance-map {
+  @for $i from 0 through 5 {
+    $v: $i * 10;
+    $v2: $v + 2;
+    $v3: $v + 4;
+    $v4: $v + 5;
+    $v5: $v + 6;
+    $v6: $v + 8;
+
+    .#{$key}-#{$v} {
+      #{$propety}: #{px2n($v)} !important;
+    }
+    .#{$key}-#{$v2} {
+      #{$propety}: #{px2n($v2)} !important;
+    }
+    .#{$key}-#{$v3} {
+      #{$propety}: #{px2n($v3)} !important;
+    }
+    .#{$key}-#{$v4} {
+      #{$propety}: #{px2n($v4)} !important;
+    }
+    .#{$key}-#{$v5} {
+      #{$propety}: #{px2n($v5)} !important;
+    }
+    .#{$key}-#{$v6} {
+      #{$propety}: #{px2n($v6)} !important;
+    }
+  }
+}
+
+// font-size
+@for $i from 0 through 20 {
+  $v: ($i * 2) + 12;
+  .fs-#{$v} {
+    font-size: px2n($v) !important;
+  }
+}
+
+// font-weight
+@for $i from 1 through 9 {
+  $v: $i * 100;
+  .fw-#{$v} {
+    font-weight: $v;
+  }
+}
+
+// width percent
+@for $i from 0 through 10 {
+  $percent1: $i * 5;
+  $percent2: $i * 5 + 50;
+  .wp-#{$percent1} {
+    width: percentage($percent1 / 100) !important;
+  }
+  .wp-#{$percent2} {
+    width: percentage($percent2 / 100) !important;
+  }
+}
+
+// abbr
+$abbr: (plr, ptb, mlr, mtb);
+
+@each $value in $abbr {
+  @for $step from 0 through 6 {
+    $tmp: $step * 10;
+    @if $value == 'plr' {
+      .#{$value}-#{$tmp} {
+        padding-left: #{px2n($tmp) !important};
+        padding-right: #{px2n($tmp) !important};
+      }
+    } @else if $value == 'ptb' {
+      .#{$value}-#{$tmp} {
+        padding-top: #{px2n($tmp) !important};
+        padding-bottom: #{px2n($tmp) !important};
+      }
+    } @else if $value == 'mlr' {
+      .#{$value}-#{$tmp} {
+        margin-left: #{px2n($tmp) !important};
+        margin-right: #{px2n($tmp) !important};
+      }
+    } @else if $value == 'mtb' {
+      .#{$value}-#{$tmp} {
+        margin-top: #{px2n($tmp) !important};
+        margin-bottom: #{px2n($tmp) !important};
+      }
+    }
+  }
+}
+
+// t, b, l, r
+$tblr: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right
+);
+
+@each $key, $value in $tblr {
+  @for $step from 0 through 5 {
+    $tmp: $step * 10;
+    @if $step != 0 {
+      .#{$key}-#{$tmp} {
+        #{$value}: #{px2n($tmp) !important};
+      }
+    } @else {
+      .#{$key}-#{$tmp} {
+        #{$value}: #{$tmp !important};
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+// Taro UI样式库
+@import "~taro-ui/dist/style/index.scss";
+// 内置全局样式库，组件内需单独引用
+@import "./assets/scss/index.scss";
+@import "./assets/scss/mixins.scss";
+@import "./assets/theme/index.scss";
+
+page {
+  width: 100%;
+  height: 100%;
+  font-weight: 500;
+  font-size: px2n(24);
+  background-color: $theme-background-color;
+}

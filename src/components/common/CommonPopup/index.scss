@@ -1,0 +1,66 @@
+@import "../../../assets/scss/index.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-head: common-popup;
+
+.#{$style-head} {
+  @include match-parent();
+  @include fixed();
+  @include cover();
+  @include letter-spacing(1.4);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+
+  &__inner {
+    @include size(600, 700);
+    @include radius(20);
+    @include bgc($theme-primary);
+    @include relative();
+    @include box();
+    z-index: 2;
+  }
+
+  &__title {
+    @include text(36, $theme-text-color, bold);
+  }
+
+  &__image {
+    @include match-width();
+  }
+
+  &__bottom {
+    @include match-width();
+    @include font-size(30);
+    @include color($theme-text-color);
+    // @include bold();
+  }
+
+  &__label {
+    @include size(32, 32);
+    @include bgc($theme-text-color);
+    @include radius(10);
+    @include color($theme-white);
+    // @include line-height(1);
+    @include font-size(24);
+    @include box();
+    @include text-align(center);
+    margin-left: px2n(80);
+  }
+
+  &__cover {
+    @include match-parent();
+    @include absolute();
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  &__close {
+    @include relative();
+    z-index: 2;
+  }
+}

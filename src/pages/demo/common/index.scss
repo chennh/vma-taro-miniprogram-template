@@ -1,0 +1,18 @@
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$color: red;
+$color: blue;
+
+.text-color {
+  color: $color;
+}
+
+
+.block {
+  width: 100%;
+  height: px2n(100);
+  @include border();
+  @include align-center();
+  margin-bottom: px2n(10);
+}

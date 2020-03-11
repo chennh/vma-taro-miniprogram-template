@@ -1,0 +1,57 @@
+@import "../../../assets/scss/index.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-head: common-authorize;
+
+.#{$style-head} {
+  @include match-parent();
+  @include fixed();
+  @include cover();
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 15;
+
+  &__inner {
+    @include pb(110);
+  }
+
+  &__bottom {
+    @include size(560, 500);
+    @include radius(30);
+    @include bgc($theme-white);
+  }
+
+  &__title {
+    @include text(36, $theme-text-color, 500);
+    @include pt(80);
+  }
+
+  &__tip {
+    @include text(28, $theme-text-color-3, 500);
+    @include pt(50);
+    @include pb(50);
+  }
+
+  &__btn {
+    // @include size(300, 88);
+    @include radius(44);
+    @include relative();
+    box-shadow: 0 px2n(8) px2n(40) 0 rgba(162, 108, 13, 0.22);
+
+    &__cover {
+      @include match-parent();
+      @include absolute();
+      left: 0;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &__small__btn {
+    @include text(26, $theme-text-color-6, 500);
+    @include pt(40);
+  }
+}

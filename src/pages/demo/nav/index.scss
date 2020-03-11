@@ -1,0 +1,9 @@
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$color: red;
+$color: blue;
+
+.text-color {
+  color: $color;
+}

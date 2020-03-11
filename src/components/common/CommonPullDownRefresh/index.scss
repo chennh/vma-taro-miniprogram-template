@@ -1,0 +1,75 @@
+@import "../../../assets/scss/index.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-head: common-pull-down-refresh;
+
+.#{$style-head} {
+  @include match-width();
+  @include bgc($theme-background-color);
+  transition: height 0.3 ease-in-out;
+
+  .dot {
+    @include size(12, 12);
+    @include circle();
+    @include box();
+    background-color: $theme-white;
+  
+    &.dot-1 {
+      animation: keyframes-dot-1 1.6s ease-in infinite;
+    }
+  
+    &.dot-2 {
+      animation: keyframes-dot-2 1.6s ease-in infinite;
+    }
+  
+    &.dot-3 {
+      animation: keyframes-dot-3 1.6s ease-in infinite;
+    }
+  }
+}
+
+@keyframes keyframes-dot-1 {
+  
+  0% {
+    background-color: $theme-text-color-3;
+  }
+
+  50% {
+    background-color: $theme-white;
+  }
+
+  100% {
+    background-color: $theme-white;
+  }
+}
+
+@keyframes keyframes-dot-2 {
+  
+  0% {
+    background-color: $theme-white;
+  }
+
+  50% {
+    background-color: $theme-text-color-3;
+  }
+
+  100% {
+    background-color: $theme-white;
+  }
+}
+
+@keyframes keyframes-dot-3 {
+  
+  0% {
+    background-color: $theme-white;
+  }
+
+  50% {
+    background-color: $theme-white;
+  }
+
+  100% {
+    background-color: $theme-text-color-3;
+  }
+}

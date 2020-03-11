@@ -1,0 +1,21 @@
+@import "../../../assets/scss/index.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-head: common-progress-bar;
+
+.#{$style-head} {
+  // @include match-width();
+
+  &__bar {
+    @include size(80, 48);
+    @include box();
+    @include bgc($theme-primary);
+    @include text(24, $theme-text-color, 500);
+    border-radius: px2n(30) px2n(24) px2n(24) 0;
+
+    &.reversed {
+      border-radius: px2n(24) px2n(30) 0 px2n(24);
+    }
+  }
+}

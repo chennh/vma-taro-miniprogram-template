@@ -1,0 +1,14 @@
+@import "../../../assets/scss/index.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-head: common-button;
+
+.#{$style-head} {
+  @include match-parent();
+
+  &__inner {
+    @include match-parent();
+    @include no-like-btn();
+  }
+}

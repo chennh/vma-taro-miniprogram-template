@@ -1,0 +1,60 @@
+@import "../../../assets/scss/index.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-head: common-popup-for-rules;
+
+.#{$style-head} {
+  @include match-parent();
+  @include fixed();
+  @include cover();
+  @include letter-spacing(1.4);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+
+  &__inner {
+    @include width(600);
+    @include radius(20);
+    @include bgc($theme-white);
+    @include relative();
+    z-index: 3;
+  }
+
+  &__title {
+    @include match-width();
+    @include text(36, $theme-text-color, bold);
+  }
+
+  &__sub_inner {
+    @include match-left-space();
+    @include box();
+    max-height: px2n(580);
+    overflow: auto;
+  }
+
+  &__subtitle {
+    @include match-width();
+    @include text(28, $theme-text-color-2, 500);
+
+    .required {
+      @include color($theme-text-color-7);
+      @include bold();
+    }
+  }
+
+  &__cover {
+    @include match-parent();
+    @include absolute();
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  &__close {
+    @include relative();
+    z-index: 2;
+  }
+}

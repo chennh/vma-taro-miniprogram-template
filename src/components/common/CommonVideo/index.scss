@@ -1,0 +1,10 @@
+@import "../../../assets/scss/index.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-name: adapter-video;
+
+.#{$style-name} {
+  width: px2n(750);
+  height: px2n(420);
+}

@@ -1,0 +1,354 @@
+// 单位换算
+@function px2n($px) {
+  @if ($px == 0) {
+    @return 0;
+  }
+  @return $px + px;
+}
+
+// 默认值
+$default-background-color: #FFFFFF;
+$default-border-color: #F0F0F0;
+$default-border-width: 1;
+$default-border-style: solid;
+$default-border-radius: 10;
+$default-color: #333333;
+$default-font-size: 24;
+$default-font-weight: 500;
+$default-line-height: 1.8;
+
+// padding
+@mixin pd($padding-top: 0, $padding-right: 0, $padding-bottom: 0, $padding-left: 0) {
+  padding: px2n($padding-top) px2n($padding-right) px2n($padding-bottom) px2n($padding-left);
+}
+
+// padding left & right
+@mixin plr($padding: 0) {
+  padding-left: px2n($padding);
+  padding-right: px2n($padding);
+}
+
+// padding top & bottom
+@mixin ptb($padding: 0) {
+  padding-top: px2n($padding);
+  padding-bottom: px2n($padding);
+}
+
+// padding-top
+@mixin pt($padding: 0) {
+  padding-top: px2n($padding);
+}
+
+// padding-bottom
+@mixin pb($padding: 0) {
+  padding-bottom: px2n($padding);
+}
+
+// margin
+@mixin md($margin-top: 0, $margin-right: 0, $margin-bottom: 0, $margin-left: 0) {
+  margin: px2n($margin-top) px2n($margin-right) px2n($margin-bottom) px2n($margin-left);
+}
+
+// margin left & right
+@mixin mlr($margin: 0) {
+  margin-left: px2n($margin);
+  margin-right: px2n($margin);
+}
+
+// margin top & bottom
+@mixin mtb($margin: 0) {
+  margin-top: px2n($margin);
+  margin-bottom: px2n($margin);
+}
+
+// 组件大小
+@mixin size($width: 0, $height: 0) {
+  width: px2n($width);
+  height: px2n($height);
+}
+
+// 宽度占比
+@mixin match-width($percent: 100) {
+  width: percentage($percent / 100);
+}
+
+// 高度占比
+@mixin match-height($percent: 100) {
+  height: percentage($percent / 100);
+}
+
+// 占满父容器
+@mixin match-parent($percent: 100) {
+  width: percentage($percent / 100);
+  height: percentage($percent / 100);
+}
+
+// 占满剩余空间
+@mixin match-left-space() {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+}
+
+// 宽度
+@mixin width($width) {
+  width: px2n($width);
+}
+
+// 高度
+@mixin height($height) {
+  height: px2n($height);
+}
+
+// 最大宽度
+@mixin max-width($width) {
+  max-width: px2n($width);
+}
+
+// 最大高度
+@mixin max-height($height) {
+  max-height: px2n($height);
+}
+
+// 背景颜色
+@mixin bgc($bgc: $default-background-color) {
+  background-color: $bgc !important;
+}
+
+// 字体颜色
+@mixin color($color: $default-color) {
+  color: $color !important;
+}
+
+// 字体大小
+@mixin font-size($font-size: $default-font-size) {
+  font-size: px2n($font-size) !important;
+}
+
+// 字体粗细
+@mixin font-weight($font-weight: $default-font-weight) {
+  font-weight: $font-weight !important;
+}
+
+// 加粗
+@mixin bold() {
+  font-weight: bold !important;
+}
+
+// 文本组合
+@mixin text($font-size: $default-font-size, $color: $default-color, $font-weight: $default-font-weight) {
+  font-weight: $font-weight !important;
+  font-size: px2n($font-size) !important;
+  color: $color !important;
+}
+
+// 行高
+@mixin line-height($line-height: $default-line-height) {
+  line-height: $line-height;
+}
+
+// 过期
+@mixin outdated() {
+  text-decoration: line-through;
+}
+
+// 文本对齐
+@mixin text-align($align: left) {
+  text-align: $align;
+}
+
+// 省略
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 多行省略
+@mixin ellipsis-n($lines: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  display: box;
+  -webkit-line-clamp: $lines;
+  line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  word-break: break-all;
+  // word-wrap: break-word;
+}
+
+// 浮动
+@mixin float($align: left) {
+  float: $align;
+}
+
+// 圆角
+@mixin radius($radius: $default-border-radius) {
+  border-radius: px2n($radius) !important;
+}
+
+// 圆
+@mixin circle() {
+  border-radius: 50%;
+}
+
+// 边框
+@mixin border($border-color: $default-border-color, $border-width: $default-border-width, $border-style: $default-border-style) {
+  border: px2n($border-width) $border-style $border-color !important;
+}
+
+// 下边框
+@mixin border-bottom($border-color: $default-border-color, $border-width: $default-border-width, $border-style: $default-border-style) {
+  border-bottom: px2n($border-width) $border-style $border-color;
+}
+
+// 上边框
+@mixin border-top($border-color: $default-border-color, $border-width: $default-border-width, $border-style: $default-border-style) {
+  border-top: px2n($border-width) $border-style $border-color;
+}
+
+// 相对定位
+@mixin relative() {
+  position: relative;
+}
+
+// 绝对定位
+@mixin absolute() {
+  position: absolute;
+}
+
+// 固定定位
+@mixin fixed() {
+  position: fixed;
+}
+
+// 弹性布局
+@mixin flex() {
+  position: flex;
+}
+
+// 盒子
+@mixin box() {
+  box-sizing: border-box;
+}
+
+// 遮罩背景色
+@mixin cover($opacity: 0.5) {
+  background-color: rgba(0, 0, 0, $opacity);
+}
+
+// 简版按钮
+@mixin btn($background-color: $default-background-color, $border-color: $default-border-color, $border-radius: 0) {
+  border-radius: px2n($border-radius);
+  background-color: $background-color;
+  border-color: $border-color;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// 居中对齐
+@mixin align-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// 默认
+@mixin align-default() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+// 水平两端对齐
+@mixin align-hor-bet() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+// 箭头
+@mixin arrow($arrow-type: 'down', $arrow-width: 8, $arrow-color: $theme-text-color) {
+  $borders: (
+    top: (dashed, transparent),
+    right: (dashed, transparent),
+    bottom: (dashed, transparent),
+    left: (dashed, transparent)
+  );
+  @if $arrow-type == 'down' {
+    $borders: (
+      top: (solid, $arrow-color),
+      right: (dashed, transparent),
+      bottom: (dashed, transparent),
+      left: (dashed, transparent)
+    );
+  }
+  @else if $arrow-type == 'up' {
+    $borders: (
+      top: (dashed, transparent),
+      right: (dashed, transparent),
+      bottom: (solid, $arrow-color),
+      left: (dashed, transparent)
+    );
+  }
+  @else if $arrow-type == 'left' {
+    $borders: (
+      top: (dashed, transparent),
+      right: (solid, $arrow-color),
+      bottom: (dashed, transparent),
+      left: (dashed, transparent)
+    );
+  }
+  @else if $arrow-type == 'right' {
+    $borders: (
+      top: (dashed, transparent),
+      right: (dashed, transparent),
+      bottom: (dashed, transparent),
+      left: (solid, $arrow-color)
+    );
+  }
+  @each $key, $value in $borders {
+    $tmp: px2n($arrow-width);
+    @each $item in $value {
+      $tmp: $tmp $item;
+    }
+    border-#{$key}: $tmp;
+  }
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  display: inline-flex;
+}
+
+// 设置透明度
+@mixin opacity($opacicy: 0.4) {
+  opacity: $opacicy !important;
+}
+
+// 溢出隐藏
+@mixin overflow($overflow: hidden) {
+  overflow: $overflow;
+}
+
+// 溢出隐藏
+@mixin letter-spacing($spacing: 0) {
+  letter-spacing: px2n($spacing);
+}
+
+// 微信小程序按钮去样式
+@mixin no-like-btn() {
+  background-color: transparent;
+  border-radius: 0;
+  &::after {
+    border: none;
+  }
+}

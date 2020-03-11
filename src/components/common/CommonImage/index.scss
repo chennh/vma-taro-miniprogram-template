@@ -1,0 +1,26 @@
+@import "../../../assets/scss/index.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-head: common-image;
+
+.#{$style-head} {
+  @include size(300, 300);
+  // @include overflow();
+  @include box();
+
+  &.active {
+    
+    &:active {
+      @include opacity(0.4);
+    }
+  }
+
+  &__icon {
+    @include size(48, 48);
+  }
+
+  &__padding {
+    @include plr(40);
+  }
+}

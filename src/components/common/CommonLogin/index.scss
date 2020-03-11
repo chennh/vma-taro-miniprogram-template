@@ -1,0 +1,34 @@
+@import "../../../assets/scss/index.scss";
+@import "../../../assets/scss/mixins.scss";
+@import "../../../assets/theme/index.scss";
+
+$style-head: common-login;
+
+.#{$style-head} {
+  @include match-parent();
+  @include fixed();
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+
+  &__cover {
+    @include match-parent();
+    @include absolute();
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  &__btn {
+    @include match-width();
+    @include absolute();
+    bottom: px2n(70 + $tab-bar-height);
+
+    &__inner {
+      @include overflow();
+      @include radius(49);
+      box-shadow: 0 px2n(8) px2n(40) 0 rgba(162, 108, 13, 0.22);
+    }
+  }
+}
